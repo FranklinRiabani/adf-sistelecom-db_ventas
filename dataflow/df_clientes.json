@@ -1,0 +1,68 @@
+{
+	"name": "df_clientes",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "clientes_csv",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "clientes_sql",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "sort1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          id_cliente as string,",
+				"          {ci-nit} as string,",
+				"          nombre as string,",
+				"          {fecha-nac} as string,",
+				"          genero as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 sort(desc(nombre, true)) ~> sort1",
+				"sort1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          ID_CLIENTE as string,",
+				"          CI_NIT as string,",
+				"          NOMBRE as string,",
+				"          FECHA_NAC as string,",
+				"          GENERO as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          ID_CLIENTE = id_cliente,",
+				"          CI_NIT = {ci-nit},",
+				"          NOMBRE = nombre,",
+				"          FECHA_NAC = {fecha-nac},",
+				"          GENERO = genero",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}
