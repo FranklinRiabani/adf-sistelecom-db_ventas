@@ -1,0 +1,15 @@
+{
+	"name": "adf-sistelecom-70364396",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "brazilsouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "27edf22c-4de1-4a0b-9e10-b52ffeba0a8e",
+		"tenantId": "cc28633f-12b8-46cb-bc15-951dae239b4d"
+	}
+}
