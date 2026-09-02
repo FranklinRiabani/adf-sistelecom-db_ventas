@@ -11,7 +11,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": "productos.csv",
-				"fileSystem": "raw"
+				"fileSystem": "dasdsa"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
