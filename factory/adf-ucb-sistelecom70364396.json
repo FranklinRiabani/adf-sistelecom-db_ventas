@@ -1,0 +1,15 @@
+{
+	"name": "adf-ucb-sistelecom70364396",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "c32adf70-1ef4-42e7-8757-d61e85ad1963",
+		"tenantId": "cc28633f-12b8-46cb-bc15-951dae239b4d"
+	}
+}
